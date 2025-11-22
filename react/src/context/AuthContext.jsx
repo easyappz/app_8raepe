@@ -43,18 +43,15 @@ export const AuthProvider = ({ children }) => {
     loadProfile();
   }, [loadProfile]);
 
-  const login = useCallback(
-    async (nextToken) => {
-      if (!nextToken) {
-        return;
-      }
-      if (typeof window !== 'undefined') {
-        window.localStorage.setItem(AUTH_TOKEN_KEY, nextToken);
-      }
-      setToken(nextToken);
-    },
-    []
-  );
+  const login = useCallback(async nextToken => {
+    if (!nextToken) {
+      return;
+    }
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(AUTH_TOKEN_KEY, nextToken);
+    }
+    setToken(nextToken);
+  }, []);
 
   const logout = useCallback(() => {
     if (typeof window !== 'undefined') {
