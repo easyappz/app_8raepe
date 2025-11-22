@@ -40,6 +40,8 @@ components:
       $ref: ./components/schemas/ChatMessageList.yaml
     Error:
       $ref: ./components/schemas/Error.yaml
+    AuthSuccess:
+      $ref: ./components/schemas/AuthSuccess.yaml
   securitySchemes:
     SessionAuth:
       type: apiKey

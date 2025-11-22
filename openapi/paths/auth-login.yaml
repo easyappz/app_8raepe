@@ -2,7 +2,7 @@ post:
   tags:
     - Auth
   summary: Obtain authentication token
-  description: Authenticates the member and returns a reusable token.
+  description: Authenticates the member and returns a reusable token with profile data.
   operationId: postAuthLogin
   security: []
   requestBody:
@@ -29,7 +29,7 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/TokenResponse.yaml
+            $ref: ../components/schemas/AuthSuccess.yaml
     "400":
       description: Invalid credentials or request.
       content:

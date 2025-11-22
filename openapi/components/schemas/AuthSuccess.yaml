@@ -1,0 +1,11 @@
+type: object
+description: Authentication payload containing token and profile data.
+properties:
+  token:
+    type: string
+    description: Token string to send in the Authorization header.
+  member:
+    $ref: ./MemberProfile.yaml
+required:
+  - token
+  - member
