@@ -52,4 +52,4 @@ components:
       name: Authorization
       description: Token key supplied as `Authorization: Token <key>`.
 security:
-  - {}
+  - TokenAuth: []
