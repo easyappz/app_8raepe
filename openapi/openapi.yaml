@@ -1,0 +1,55 @@
+openapi: 3.0.3
+info:
+  title: Easyappz Chat API
+  version: 1.0.0
+  description: API for member registration, authentication, profile management, and group chat messages.
+servers:
+  - url: /
+    description: Primary API server
+tags:
+  - name: Utility
+    description: Auxiliary endpoints for health checks and diagnostics.
+  - name: Auth
+    description: Registration and authentication operations.
+  - name: Profile
+    description: Endpoints that return data about the authenticated member.
+  - name: Messages
+    description: Group chat messaging resources.
+paths:
+  /api/hello/:
+    $ref: ./paths/hello.yaml
+  /api/auth/register/:
+    $ref: ./paths/auth-register.yaml
+  /api/auth/login/:
+    $ref: ./paths/auth-login.yaml
+  /api/profile/:
+    $ref: ./paths/profile.yaml
+  /api/messages/:
+    $ref: ./paths/messages.yaml
+components:
+  schemas:
+    Message:
+      $ref: ./components/schemas/Message.yaml
+    TokenResponse:
+      $ref: ./components/schemas/TokenResponse.yaml
+    MemberProfile:
+      $ref: ./components/schemas/MemberProfile.yaml
+    ChatMessage:
+      $ref: ./components/schemas/ChatMessage.yaml
+    ChatMessageList:
+      $ref: ./components/schemas/ChatMessageList.yaml
+    Error:
+      $ref: ./components/schemas/Error.yaml
+  securitySchemes:
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+      description: Django session authentication cookie.
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token key supplied as `Authorization: Token <key>`.
+security:
+  - {}

@@ -1,0 +1,20 @@
+get:
+  tags:
+    - Utility
+  summary: Health check
+  description: Returns a friendly message to confirm the API is operational.
+  operationId: getHello
+  security: []
+  responses:
+    "200":
+      description: Service is available.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Message.yaml
+    "500":
+      description: Unexpected server error.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml

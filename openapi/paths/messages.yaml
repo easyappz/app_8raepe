@@ -1,0 +1,60 @@
+get:
+  tags:
+    - Messages
+  summary: List chat messages
+  description: Returns a paginated list of chat messages ordered by creation time.
+  operationId: listMessages
+  security:
+    - TokenAuth: []
+  responses:
+    "200":
+      description: Paginated chat message list.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ChatMessageList.yaml
+    "401":
+      description: Authentication required.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml
+post:
+  tags:
+    - Messages
+  summary: Create chat message
+  description: Creates a new chat message for the authenticated member.
+  operationId: createMessage
+  security:
+    - TokenAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - text
+          properties:
+            text:
+              type: string
+              description: Text content of the chat message.
+  responses:
+    "201":
+      description: Chat message created.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ChatMessage.yaml
+    "400":
+      description: Validation error.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml
+    "401":
+      description: Authentication required.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml

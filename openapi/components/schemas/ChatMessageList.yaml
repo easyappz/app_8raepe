@@ -1,0 +1,25 @@
+type: object
+description: Paginated response containing chat messages.
+properties:
+  count:
+    type: integer
+    format: int32
+    description: Total number of available messages.
+  next:
+    type: string
+    format: uri
+    nullable: true
+    description: URL for the next page of results.
+  previous:
+    type: string
+    format: uri
+    nullable: true
+    description: URL for the previous page of results.
+  results:
+    type: array
+    description: Page of chat messages.
+    items:
+      $ref: ./ChatMessage.yaml
+required:
+  - count
+  - results

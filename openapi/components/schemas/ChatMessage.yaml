@@ -1,0 +1,38 @@
+type: object
+description: Represents a single chat message authored by a member.
+properties:
+  id:
+    type: integer
+    format: int64
+    description: Unique identifier of the message.
+  author:
+    type: object
+    description: Information about the member who created the message.
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: Unique identifier of the member.
+      email:
+        type: string
+        format: email
+        description: Email of the member.
+      nickname:
+        type: string
+        nullable: true
+        description: Display name of the member.
+    required:
+      - id
+      - email
+  text:
+    type: string
+    description: Text body of the message.
+  created_at:
+    type: string
+    format: date-time
+    description: Timestamp when the message was created.
+required:
+  - id
+  - author
+  - text
+  - created_at

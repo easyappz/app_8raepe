@@ -1,0 +1,8 @@
+type: object
+description: Simple message payload used for hello responses.
+properties:
+  message:
+    type: string
+    description: Response text.
+required:
+  - message

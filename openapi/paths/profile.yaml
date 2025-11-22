@@ -1,0 +1,21 @@
+get:
+  tags:
+    - Profile
+  summary: Retrieve member profile
+  description: Returns the profile of the currently authenticated member.
+  operationId: getProfile
+  security:
+    - TokenAuth: []
+  responses:
+    "200":
+      description: Profile data returned.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/MemberProfile.yaml
+    "401":
+      description: Authentication credentials were not provided or are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml

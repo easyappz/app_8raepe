@@ -1,0 +1,8 @@
+type: object
+description: Authentication token returned after a successful login.
+properties:
+  token:
+    type: string
+    description: Token string to send in the Authorization header.
+required:
+  - token

@@ -1,0 +1,43 @@
+post:
+  tags:
+    - Auth
+  summary: Register a new member
+  description: Creates a member account using email and password credentials.
+  operationId: postAuthRegister
+  security: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - email
+            - password
+          properties:
+            email:
+              type: string
+              format: email
+              description: Unique email address for the member.
+            password:
+              type: string
+              format: password
+              minLength: 8
+              description: Password used for future logins.
+            nickname:
+              type: string
+              nullable: true
+              description: Optional display name for the member.
+  responses:
+    "201":
+      description: Member account created.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/MemberProfile.yaml
+    "400":
+      description: Validation error.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml

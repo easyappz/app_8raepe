@@ -1,0 +1,38 @@
+post:
+  tags:
+    - Auth
+  summary: Obtain authentication token
+  description: Authenticates the member and returns a reusable token.
+  operationId: postAuthLogin
+  security: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - email
+            - password
+          properties:
+            email:
+              type: string
+              format: email
+              description: Registered email address.
+            password:
+              type: string
+              format: password
+              description: Account password.
+  responses:
+    "200":
+      description: Authentication successful.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/TokenResponse.yaml
+    "400":
+      description: Invalid credentials or request.
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error.yaml
